@@ -1,0 +1,100 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: rgb(249,223,247);
+  background: radial-gradient(circle, rgba(249,223,247,1) 0%, rgba(182,215,255,1) 100%);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Sen', sans-serif;
+}
+
+.container {
+  display: grid;
+  place-items: center;
+  grid-auto-flow: column;
+  height: 80vh;
+}
+
+.box {
+  display: grid;
+  place-items: center;
+  width: 100%;
+}
+
+label {
+  width: 100%;
+}
+
+.form {
+  display: grid;
+  place-items: center;
+  gap: 2rem;
+  padding: 5rem;
+  border-radius: 10px;
+  max-width: 30rem;
+  min-height: 270px;
+  background-color:rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(1px);
+  -webkit-box-shadow: 10px 10px 64px -25px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 64px -25px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 64px -25px rgba(0,0,0,0.75);
+}
+
+.invalid:focus, .invalid:active {
+  outline: 1px solid red;
+}
+
+input {
+  height: 0;
+  border-radius: 3px;
+  border: none;
+  background-color: transparent;
+  opacity: 0.2;
+  width: 100%;
+  margin-top: 1rem;
+  transition-duration: 0.5s;
+}
+
+input:hover {
+  opacity: 1;
+  height: 2rem;
+  border-bottom: 1px solid black;
+}
+
+input:focus {
+  height: 2.5rem;
+  opacity: 1;
+  outline: 0.5px solid black;
+  border-bottom: 1px solid black;
+}
+
+input:focus-within {
+  opacity: 1;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 10px;
+  padding: 0.8rem;
+  border: 1px solid rgb(255, 192, 255);
+  transition-duration: 0.2s;
+}
+
+button:hover {
+  border: 1px solid white;
+}
+
+.checkout {
+  opacity: 0;
+}
+
+.visible {
+  background-color: red;
+  opacity: 1;
+}
