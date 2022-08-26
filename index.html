@@ -11,6 +11,11 @@
   <title>SysConta</title>
 </head>
   <body>
+
+    <div class="toast" id="toast">
+      <span></span>
+    </div>
+
     <div class="container">
       <div class="side-container">
         <h1><em>SYSCONTA</em></h1>
@@ -20,30 +25,33 @@
         <span>Faça isso para cada cliente envolvido na conta</span>
         <span>Após inserir todos os indivíduos, clique em <strong>CHECKOUT</strong></span>
       </div>
-      <form class="form clienteForm">
-
-        <div class="box">
-          <label>Informe o nome do cliente: <input name="name" id="name" type="text" placeholder="Samuel Luiz" required></label>
-        </div>
-
-        <div class="box">
-          <label>Informe o CPF do cliente: <input name="cpf" id="cpf" maxlength="11" minlength="11" placeholder="123.456.789-00" required></label>
-        </div>
-
-        <div class="box">
-          <label>Informe o produto: <input name="productName" id="product" type="text" placeholder="Pizza de pepperoni" required></label>
-        </div>
-
-        <div class="box">
-          <label>Informe o preço do produto: <input name="productPrice" id="price" type="number" placeholder="R$" required></label>
-        </div>
-
-          <button id="btnCustomer" type="button" onclick="getClienteData()">REGISTRAR PEDIDO</button>
-
+      <div class="wrapper">
+        <form class="form clienteForm">
+  
+          <div class="box">
+            <label>Informe o nome do cliente: <input name="name" id="name" type="text" placeholder="Samuel Luiz" required></label>
+          </div>
+  
+          <div class="box">
+            <label>Informe o CPF do cliente: <input name="cpf" id="cpf" maxlength="11" minlength="11" placeholder="123.456.789-00" required></label>
+          </div>
+  
+          <div class="box">
+            <label>Informe o produto: <input name="productName" id="product" type="text" placeholder="Pizza de pepperoni" required></label>
+          </div>
+  
+          <div class="box">
+            <label>Informe o preço do produto: <input name="productPrice" id="price" type="number" placeholder="R$" required></label>
+          </div>
+  
+            <button id="btnCustomer" type="button" onclick="getClienteData()">REGISTRAR PEDIDO</button>
+  
+          </form>
           <div class="box buttons">
             <button id="checkout" class="checkout" type="button" onclick="checkout()">CHECKOUT</button>
           </div>
-      </form>
+
+      </div>
 
     </div>
 

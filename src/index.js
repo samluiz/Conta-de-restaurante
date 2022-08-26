@@ -3,9 +3,14 @@ let clientes = []
 let cliente = {}
 let pedido = {}
 let id = 0
+let toast = document.getElementById('toast')
 
 function checkout() {
   const pedidos = JSON.parse(localStorage.getItem("pedidos") || "[]")
+
+  if (clientes.length <= 0) {
+    window.alert("Você não pode finalizar um pedido vazio")
+  }
 
   id += 1
 
@@ -23,9 +28,10 @@ function checkout() {
   localStorage.setItem('pedidos', JSON.stringify(pedidos))
   console.log(pedidos)
 
-  clientes.splice(0, clientes.length)
-
-  window.alert("Pedido registrado")
+  toast.setAttribute('id', 'show')
+  toast.innerText = "Pedido registrado!"
+  toast.style.border = "1px solid green";
+  setTimeout(() => { toast.setAttribute('id', '')}, 7000)
 }
 
 
@@ -39,21 +45,31 @@ function getClienteData() {
 
   if (Array.from(inputCpf.value).length != 11) {
     inputCpf.setAttribute('class', 'invalid')
-    window.alert("CPF Inválido")
-    inputCpf.value = ""
+    toast.setAttribute('id', 'show')
+    toast.innerText = 'CPF Inválido'
+    toast.style.border = "1px solid red";
+    setTimeout(() => { toast.setAttribute('id', '')}, 7000)
   }
   else if (inputName.value == "") {
     inputName.setAttribute('class', 'invalid')
-    window.alert("Nome Inválido")
-    inputName.value = ""
+    toast.setAttribute('id', 'show')
+    toast.innerText = "Nome Inválido"
+    toast.style.border = "1px solid red";
+    setTimeout(() => { toast.setAttribute('id', '')}, 7000)
   }
   else if (inputProduct.value == "") {
     inputProduct.setAttribute('class', 'invalid')
-    window.alert("Você deve informar um produto.")
+    toast.setAttribute('id', 'show')
+    toast.innerText = "Você deve informar um produto."
+    toast.style.border = "1px solid red";
+    setTimeout(() => { toast.setAttribute('id', '')}, 7000)
   }
   else if (inputPrice.value == "") {
     inputProduct.setAttribute('class', 'invalid')
-    window.alert("Você deve informar um preço para o produto.")
+    toast.setAttribute('id', 'show')
+    toast.innerText = "Você deve informar um preço para o produto."
+    toast.style.border = "1px solid red";
+    setTimeout(() => { toast.setAttribute('id', '')}, 7000)
   }
   else {
 
@@ -92,7 +108,10 @@ function getClienteData() {
       btn.setAttribute('class', '')
     }
 
-    window.alert("Cliente registrado. Você pode registrar mais clientes. Não esqueça de fazer o checkout quando terminar.")
+    toast.setAttribute('id', 'show')
+    toast.innerText = "Cliente registrado! Você pode registrar mais clientes. Não esqueça de fazer o checkout quando terminar."
+    toast.style.border = "1px solid green";
+    setTimeout(() => { toast.setAttribute('id', '')}, 7000)
   }
 
   console.log(clientes)
