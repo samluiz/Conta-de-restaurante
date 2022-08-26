@@ -2,50 +2,67 @@ let count = 0
 let clientes = []
 let cliente = {}
 let pedido = {}
-let id = 0
+let totalPrice = 0
 let toast = document.getElementById('toast')
 
 function sumTotal() {
-  pedidos = JSON.parse(localStorage.getItem("pedidos"))
+  const lastPrice = JSON.parse(localStorage.getItem("price") || 0)
+  const { price } = cliente
 
-  const { price } = clientes
-
+  console.log(lastPrice)
   console.log(price)
+
+  sumPrice = lastPrice + price
+  console.log(sumPrice)
+
+  return sumPrice
 }
 
 function checkout() {
+  // Buscando itens do armazenamento local do navegador
   const pedidos = JSON.parse(localStorage.getItem("pedidos") || "[]")
+  let id = JSON.parse(localStorage.getItem("id") || 0)
+
 
   if (clientes.length <= 0) {
     window.alert("Você não pode finalizar um pedido vazio")
   }
 
-  id += 1
+  // Calculando o preço total do pedido
+  totalPrice = sumTotal()
+
+  // Incrementando o ID a cada pedido
+    id = id + 1
 
     pedido = {
       id,
-      clientes
+      clientes,
+      totalPrice
   }
 
-  console.log(id)
-
+  // Inserindo o pedido no array de armazenamento de pedidos
   pedidos.push(pedido)
-  sumTotal()
 
+  // Desativando novamente o botão de checkout
   let btn = document.getElementById('checkout')
   btn.setAttribute('class', 'checkout')
 
+  // Salvando itens no armazenamento local do navegador
   localStorage.setItem('pedidos', JSON.stringify(pedidos))
-  console.log(pedidos)
+  localStorage.setItem('id', JSON.stringify(id))
 
+  // Mostrando o toast de confirmação ao usuário
   toast.setAttribute('id', 'show')
   toast.innerText = "Pedido registrado!"
   toast.style.border = "1px solid green";
   setTimeout(() => { toast.setAttribute('id', '')}, 7000)
+
+  // Limpando os clientes que já foram inseridos no checkout
+  clientes = []
+  localStorage.setItem('price', 0)
 }
 
-
-
+// Pegando os dados via input
 function getClienteData() {
 
   let inputName = document.getElementById('name')
@@ -83,8 +100,10 @@ function getClienteData() {
   }
   else {
 
+    // Contador que controla se o array de clientes está vazio ou não para manipular o botão de checkout
     count++
 
+    // Incluindo data e hora e inserindo informações do cliente
     let date = new Date()
     let dd = String(date.getDate()).padStart(2, '0')
     let mm = String(date.getMonth() + 1).padStart(2, '0')
@@ -92,9 +111,6 @@ function getClienteData() {
     let hour = date.getHours()
     let min = date.getMinutes()
     let sec = date.getSeconds()
-    let dayOfWeek = date.getDay()
-
-    
     let createdAt = hour + ":" + min + ":" + sec + " - " + dd + "/" + mm + "/" + yyyy
     let name = inputName.value
     let cpf = inputCpf.value
@@ -135,6 +151,8 @@ function getClienteData() {
     toast.style.border = "1px solid green";
     setTimeout(() => { toast.setAttribute('id', '')}, 7000)
   }
+
+  localStorage.setItem('price', JSON.stringify(parseFloat(price)))
 
   console.log(clientes)
 }
