@@ -1,16 +1,30 @@
 let count = 0
+let clientes = []
+let produtos = []
+let pedidos = []
+let pedido = {}
 
-function createOrder() {
+function add() {
   const pedidos = JSON.parse(localStorage.getItem("pedidos") || "[]")
 
+    pedido = {
+    clientes,
+    produtos
+  }
 
+  pedidos.push(pedido)
+  let btn = document.getElementById('add')
+  btn.setAttribute('class', 'add')
+
+  localStorage.setItem('pedidos', JSON.stringify(pedidos))
+  console.log(pedidos)
 }
 
 
 
 function getClienteData() {
 
-  const clientes = JSON.parse(localStorage.getItem("clientes") || "[]")
+  clientes = JSON.parse(localStorage.getItem("clientes") || "[]")
 
   let inputName = document.getElementById('name')
   let inputCpf = document.getElementById('cpf')
@@ -30,7 +44,7 @@ function getClienteData() {
     let name = inputName.value
     let cpf = inputCpf.value
 
-    let cliente = {
+    cliente = {
       name,
       cpf
     }
@@ -49,7 +63,7 @@ function getClienteData() {
 
 function getProductData() {
 
-  const produtos = JSON.parse(localStorage.getItem("produtos") || "[]")
+  produtos = JSON.parse(localStorage.getItem("produtos") || "[]")
 
   let inputProduct = document.getElementById('product')
   let inputPrice = document.getElementById('price')
@@ -69,7 +83,7 @@ function getProductData() {
     let name = inputProduct.value
     let price = inputPrice.value
 
-    let produto = {
+    produto = {
       name,
       price
     }
@@ -80,12 +94,15 @@ function getProductData() {
     inputProduct.value = ""
     inputPrice.value = ""
 
-    let btn = document.getElementById('checkout')
+    let btn = document.getElementById('add')
 
     console.log(count)
 
     if (count > 0) {
       btn.setAttribute('class', 'visible')
+    }
+    else {
+      btn.setAttribute('class', '')
     }
   }
 

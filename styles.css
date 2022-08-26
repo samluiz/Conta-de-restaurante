@@ -17,7 +17,8 @@ html {
   display: grid;
   place-items: center;
   grid-auto-flow: column;
-  height: 80vh;
+  height: fit-content;
+  margin: 4rem;
 }
 
 .box {
@@ -91,11 +92,20 @@ button:hover {
   background-color: green;
 }
 
+.add {
+  opacity: 70%;
+}
+
+.add:hover, .checkout:hover {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
 .checkout {
-  opacity: 0;
+  opacity: 70%;
 }
 
 .visible {
-  background-color: red;
+  background-color: rgba(0, 140, 255, 0.73);
   opacity: 1;
 }
