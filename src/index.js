@@ -2,21 +2,9 @@ let count = 0
 let clientes = []
 let cliente = {}
 let pedido = {}
+let price
 let totalPrice = 0
 let toast = document.getElementById('toast')
-
-function sumTotal() {
-  const lastPrice = JSON.parse(localStorage.getItem("price") || 0)
-  const { price } = cliente
-
-  console.log(lastPrice)
-  console.log(price)
-
-  sumPrice = lastPrice + price
-  console.log(sumPrice)
-
-  return sumPrice
-}
 
 function checkout() {
   // Buscando itens do armazenamento local do navegador
@@ -29,7 +17,7 @@ function checkout() {
   }
 
   // Calculando o preço total do pedido
-  totalPrice = sumTotal()
+  totalPrice = totalPrice
 
   // Incrementando o ID a cada pedido
     id = id + 1
@@ -115,7 +103,7 @@ function getClienteData() {
     let name = inputName.value
     let cpf = inputCpf.value
     let productName = inputProduct.value
-    let price = inputPrice.value
+    price = inputPrice.value
 
     cliente = {
       name,
@@ -124,8 +112,14 @@ function getClienteData() {
       price,
       createdAt
     }
-
+    
     clientes.push(cliente)
+
+    // Somando o preço dos produtos a cada iteração.
+    if (clientes.length > 0) {
+      totalPrice += parseFloat(price)
+    }
+
     inputCpf.setAttribute('class', '')
     inputName.setAttribute('class', '')
     inputName.value = ""
@@ -151,8 +145,6 @@ function getClienteData() {
     toast.style.border = "1px solid green";
     setTimeout(() => { toast.setAttribute('id', '')}, 7000)
   }
-
-  localStorage.setItem('price', JSON.stringify(parseFloat(price)))
 
   console.log(clientes)
 }
