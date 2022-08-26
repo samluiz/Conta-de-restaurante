@@ -5,6 +5,14 @@ let pedido = {}
 let id = 0
 let toast = document.getElementById('toast')
 
+function sumTotal() {
+  pedidos = JSON.parse(localStorage.getItem("pedidos"))
+
+  const { price } = clientes
+
+  console.log(price)
+}
+
 function checkout() {
   const pedidos = JSON.parse(localStorage.getItem("pedidos") || "[]")
 
@@ -22,6 +30,8 @@ function checkout() {
   console.log(id)
 
   pedidos.push(pedido)
+  sumTotal()
+
   let btn = document.getElementById('checkout')
   btn.setAttribute('class', 'checkout')
 
@@ -75,6 +85,17 @@ function getClienteData() {
 
     count++
 
+    let date = new Date()
+    let dd = String(date.getDate()).padStart(2, '0')
+    let mm = String(date.getMonth() + 1).padStart(2, '0')
+    let yyyy = date.getFullYear()
+    let hour = date.getHours()
+    let min = date.getMinutes()
+    let sec = date.getSeconds()
+    let dayOfWeek = date.getDay()
+
+    
+    let createdAt = hour + ":" + min + ":" + sec + " - " + dd + "/" + mm + "/" + yyyy
     let name = inputName.value
     let cpf = inputCpf.value
     let productName = inputProduct.value
@@ -84,7 +105,8 @@ function getClienteData() {
       name,
       cpf,
       productName,
-      price
+      price,
+      createdAt
     }
 
     clientes.push(cliente)
