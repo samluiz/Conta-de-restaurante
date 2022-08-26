@@ -1,33 +1,45 @@
 let count = 0
 let clientes = []
-let produtos = []
-let pedidos = []
+let cliente = {}
 let pedido = {}
+let id = 0
 
-function add() {
+function calcBill() {
+
+}
+
+function checkout() {
   const pedidos = JSON.parse(localStorage.getItem("pedidos") || "[]")
 
+  id += 1
+
     pedido = {
-    clientes,
-    produtos
+      id,
+      clientes
   }
 
+  console.log(id)
+
   pedidos.push(pedido)
-  let btn = document.getElementById('add')
-  btn.setAttribute('class', 'add')
+  let btn = document.getElementById('checkout')
+  btn.setAttribute('class', 'checkout')
 
   localStorage.setItem('pedidos', JSON.stringify(pedidos))
   console.log(pedidos)
+
+  clientes.splice(0, clientes.length)
+
+  window.alert("Pedido registrado")
 }
 
 
 
 function getClienteData() {
 
-  clientes = JSON.parse(localStorage.getItem("clientes") || "[]")
-
   let inputName = document.getElementById('name')
   let inputCpf = document.getElementById('cpf')
+  let inputProduct = document.getElementById('product')
+  let inputPrice = document.getElementById('price')
 
   if (Array.from(inputCpf.value).length != 11) {
     inputCpf.setAttribute('class', 'invalid')
@@ -39,36 +51,7 @@ function getClienteData() {
     window.alert("Nome Inválido")
     inputName.value = ""
   }
-  else {
-
-    let name = inputName.value
-    let cpf = inputCpf.value
-
-    cliente = {
-      name,
-      cpf
-    }
-
-    clientes.push(cliente)
-    inputCpf.setAttribute('class', '')
-    inputName.setAttribute('class', '')
-    inputName.value = ""
-    inputCpf.value = ""
-  }
-
-  localStorage.setItem('clientes', JSON.stringify(clientes))
-
-  console.log(clientes)
-}
-
-function getProductData() {
-
-  produtos = JSON.parse(localStorage.getItem("produtos") || "[]")
-
-  let inputProduct = document.getElementById('product')
-  let inputPrice = document.getElementById('price')
-
-  if (inputProduct.value == "") {
+  else if (inputProduct.value == "") {
     inputProduct.setAttribute('class', 'invalid')
     window.alert("Você deve informar um produto.")
   }
@@ -80,21 +63,29 @@ function getProductData() {
 
     count++
 
-    let name = inputProduct.value
+    let name = inputName.value
+    let cpf = inputCpf.value
+    let productName = inputProduct.value
     let price = inputPrice.value
 
-    produto = {
+    cliente = {
       name,
+      cpf,
+      productName,
       price
     }
 
-    produtos.push(produto)
+    clientes.push(cliente)
+    inputCpf.setAttribute('class', '')
+    inputName.setAttribute('class', '')
+    inputName.value = ""
+    inputCpf.value = ""
     inputProduct.setAttribute('class', '')
     inputPrice.setAttribute('class', '')
     inputProduct.value = ""
     inputPrice.value = ""
 
-    let btn = document.getElementById('add')
+    let btn = document.getElementById('checkout')
 
     console.log(count)
 
@@ -104,10 +95,9 @@ function getProductData() {
     else {
       btn.setAttribute('class', '')
     }
+
+    window.alert("Cliente registrado. Você pode registrar mais clientes. Não esqueça de fazer o checkout quando terminar.")
   }
 
-  localStorage.setItem('produtos', JSON.stringify(produtos))
-
-  console.log(produtos)
-
+  console.log(clientes)
 }

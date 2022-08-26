@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./src/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Sen:wght@400;700;800&display=swap" rel="stylesheet">
-  <title>Registrar Cliente</title>
+  <title>SysConta</title>
 </head>
   <body>
     <div class="container">
@@ -22,12 +22,6 @@
           <label>Informe o CPF do cliente: <input name="cpf" id="cpf" maxlength="11" minlength="11" placeholder="123.456.789-00" required></label>
         </div>
 
-          <button id="btnCustomer" type="button" onclick="getClienteData()">REGISTRAR CLIENTE</button>
-
-      </form>
-
-      <form class="form produtoForm">
-
         <div class="box">
           <label>Informe o produto: <input name="productName" id="product" type="text" placeholder="Pizza de pepperoni" required></label>
         </div>
@@ -36,14 +30,14 @@
           <label>Informe o preço do produto: <input name="productPrice" id="price" type="number" placeholder="R$" required></label>
         </div>
 
-          <button id="btnProduct" type="button" onclick="getProductData()">REGISTRAR PRODUTO</button>
+          <button id="btnCustomer" type="button" onclick="getClienteData()">REGISTRAR PEDIDO</button>
 
       </form>
 
     </div>
 
     <div class="box buttons">
-      <button id="add" class="add" type="button" onclick="add()">ADICIONAR</button>
+      <button id="checkout" class="checkout" type="button" onclick="checkout()">CHECKOUT</button>
     </div>
 
    
@@ -54,6 +48,6 @@
 
 
 
-    <script src="./index.js" defer></script>
+    <script src="./src/index.js" defer></script>
   </body>
 </html>
