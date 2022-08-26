@@ -18,13 +18,24 @@ html {
   place-items: center;
   grid-auto-flow: column;
   height: fit-content;
-  margin: 4rem;
+  margin-top: 4rem;
+}
+
+.side-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-size:x-large
 }
 
 .box {
   display: grid;
   place-items: center;
   width: 100%;
+}
+
+h1 {
+  letter-spacing: 1rem;
 }
 
 label {
@@ -88,13 +99,14 @@ button {
 }
 
 button:hover {
-  border: 1px solid white;
-  background-color: green;
+  border: 1px solid rgb(0, 0, 0);
+  background-color: rgb(56, 255, 56);
 }
 
 .checkout {
-  opacity: 70%;
+  opacity: 30%;
   pointer-events: none;
+  border: 1px solid black;
 }
 
 .visible {

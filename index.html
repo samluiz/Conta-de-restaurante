@@ -12,6 +12,14 @@
 </head>
   <body>
     <div class="container">
+      <div class="side-container">
+        <h1><em>SYSCONTA</em></h1>
+        <span>Insira os dados do cliente</span>
+        <span>Insira os dados do produto</span>
+        <span>Clique em <em>adicionar</em></span>
+        <span>Faça isso para cada cliente envolvido na conta</span>
+        <span>Após inserir todos os indivíduos, clique em <strong>CHECKOUT</strong></span>
+      </div>
       <form class="form clienteForm">
 
         <div class="box">
@@ -32,13 +40,13 @@
 
           <button id="btnCustomer" type="button" onclick="getClienteData()">REGISTRAR PEDIDO</button>
 
+          <div class="box buttons">
+            <button id="checkout" class="checkout" type="button" onclick="checkout()">CHECKOUT</button>
+          </div>
       </form>
 
     </div>
 
-    <div class="box buttons">
-      <button id="checkout" class="checkout" type="button" onclick="checkout()">CHECKOUT</button>
-    </div>
 
    
       

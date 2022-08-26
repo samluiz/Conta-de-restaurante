@@ -4,10 +4,6 @@ let cliente = {}
 let pedido = {}
 let id = 0
 
-function calcBill() {
-
-}
-
 function checkout() {
   const pedidos = JSON.parse(localStorage.getItem("pedidos") || "[]")
 
