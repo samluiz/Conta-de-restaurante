@@ -55,7 +55,7 @@ function showOrders() {
             <td>R$${pedido.clientes[i].price}</td>
             <td contentEditable>R$${pedido.totalPrice}</td>
             <td>${pedido.clientes[i].createdAt}</td>
-            <td><img src="../public/hide.svg" alt="Ocultar" class="hide" id="hide" onClick="hideOrder()" /></td>
+            <td><img src="./public/hide.svg" alt="Ocultar" class="hide" id="hide" onClick="hideOrder()" /></td>
           </tr>
         `     
       }
