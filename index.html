@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Sen:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="./public/favicon.ico" type="image/x-icon">
   <title>SysConta</title>
 </head>
   <body>
@@ -28,7 +29,7 @@
         </ul>
       </div>
       <div class="wrapper">
-        <form class="form clienteForm">
+        <form class="form clienteForm" id="form">
   
           <div class="box">
             <label>Informe o nome do cliente: <input name="name" id="name" type="text" placeholder="Samuel Luiz" required></label>
@@ -46,22 +47,38 @@
             <label>Informe o preço do produto: <input name="productPrice" id="price" type="number" placeholder="R$" required></label>
           </div>
   
-            <button id="btnCustomer" type="button" onclick="getClienteData()">REGISTRAR PEDIDO</button>
+            <button id="btnCustomer" type="button" onclick="getClienteData()">ADICIONAR</button>
   
           </form>
           <div class="box buttons">
             <button id="checkout" class="checkout" type="button" onclick="checkout()">CHECKOUT</button>
           </div>
-
+          <span class="list" id="list" onclick="displayTable()">Ver pedidos</span>
       </div>
+
+        <table class="table" id="table">
+          <thead>
+            <tr class="bg">
+              <th>ID</th>
+              <th>Cliente</th>
+              <th>Produtos</th>
+              <th>Valor</th>
+              <th>Valor total</th>
+              <th>Criado em</th>
+              <th><img src="../public/delete.svg" onclick="deleteOrders()" alt="Editar" class="delete" id="delete" /><img src="./public/close.svg" onClick="closeTable()" alt="Fechar" class="close"></th>
+            </tr>
+          </thead>
+          <tbody id="data">
+  
+          </tbody>
+  
+        </table>
 
     </div>
 
 
    
       
-
-
 
 
 
